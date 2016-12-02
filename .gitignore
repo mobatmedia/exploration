@@ -34,3 +34,5 @@ vignettes/*.pdf
 *.suo
 /PictureViewer/PictureViewer/bin/Debug
 /PictureViewer/PictureViewer/obj/Debug
+/Math Quiz/Math Quiz/bin/Debug
+/Math Quiz/Math Quiz/obj/Debug
