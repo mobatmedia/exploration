@@ -142,7 +142,6 @@ namespace MatchingGame
                 {
                     firstClicked = clickedLabel;
                     firstClicked.ForeColor = Color.Black;
-
                     return;
                 }
 
