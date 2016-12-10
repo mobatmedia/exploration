@@ -49,6 +49,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timeLabel = new System.Windows.Forms.Label();
             this.elapsedTimer = new System.Windows.Forms.Timer(this.components);
+            this.label17 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -290,27 +291,40 @@
             // 
             this.timeLabel.Dock = System.Windows.Forms.DockStyle.Right;
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeLabel.Location = new System.Drawing.Point(504, 0);
+            this.timeLabel.Location = new System.Drawing.Point(657, 0);
             this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(370, 50);
+            this.timeLabel.Size = new System.Drawing.Size(217, 50);
             this.timeLabel.TabIndex = 1;
-            this.timeLabel.Text = "0 secs";
+            this.timeLabel.Text = "0";
+            this.timeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // elapsedTimer
             // 
             this.elapsedTimer.Interval = 1000;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(503, 2);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(164, 46);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Elapsed";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 879);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
             this.Text = "Matching Game";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -336,6 +350,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Timer elapsedTimer;
+        private System.Windows.Forms.Label label17;
     }
 }
 
