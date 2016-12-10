@@ -47,7 +47,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timeLabel = new System.Windows.Forms.Label();
+            this.elapsedLabel = new System.Windows.Forms.Label();
             this.elapsedTimer = new System.Windows.Forms.Timer(this.components);
             this.label17 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
@@ -287,30 +287,30 @@
             this.timer1.Interval = 750;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // timeLabel
+            // elapsedLabel
             // 
-            this.timeLabel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeLabel.Location = new System.Drawing.Point(657, 0);
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(217, 50);
-            this.timeLabel.TabIndex = 1;
-            this.timeLabel.Text = "0";
-            this.timeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.elapsedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.elapsedLabel.Location = new System.Drawing.Point(475, 0);
+            this.elapsedLabel.Name = "elapsedLabel";
+            this.elapsedLabel.Size = new System.Drawing.Size(217, 50);
+            this.elapsedLabel.TabIndex = 1;
+            this.elapsedLabel.Text = "elapsed";
+            this.elapsedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // elapsedTimer
             // 
             this.elapsedTimer.Interval = 1000;
+            this.elapsedTimer.Tick += new System.EventHandler(this.elapsedTimer_Tick);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(503, 2);
+            this.label17.Location = new System.Drawing.Point(698, 2);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(164, 46);
+            this.label17.Size = new System.Drawing.Size(170, 46);
             this.label17.TabIndex = 2;
-            this.label17.Text = "Elapsed";
+            this.label17.Text = "seconds";
             // 
             // Form1
             // 
@@ -318,7 +318,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 879);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.timeLabel);
+            this.Controls.Add(this.elapsedLabel);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
             this.Text = "Matching Game";
@@ -348,7 +348,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Label elapsedLabel;
         private System.Windows.Forms.Timer elapsedTimer;
         private System.Windows.Forms.Label label17;
     }

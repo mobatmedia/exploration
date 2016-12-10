@@ -33,6 +33,9 @@ namespace MatchingGame
         // that the player clicks
         Label secondClicked = null;
 
+        // elapsedSecs is the number of seconds elapsed since the first click.
+        int elapsedSecs = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -61,6 +64,8 @@ namespace MatchingGame
                     iconList.RemoveAt(randomNumber);
                 }
             }
+            elapsedSecs = 0;
+            elapsedLabel.Text = elapsedSecs.ToString();
         }
         
         /// <summary>
@@ -105,7 +110,8 @@ namespace MatchingGame
             }
 
             // If the loop didn’t return from the test, all icons are matched.
-            // That means the user won. Show a message and reset the form.
+            // Stop the elapsed time timer, show a message, and reset the form.
+            elapsedTimer.Stop();
             MessageBox.Show("You matched all the icons!", "Congratulations");
             HideIcons();
             AssignIconsToSquares();
@@ -121,13 +127,21 @@ namespace MatchingGame
             // The timer is only on after two non-matching 
             // icons have been shown to the player, 
             // so ignore any clicks if the timer is running
-            if (timer1.Enabled == true)
+            if (timer1.Enabled)
                 return;
 
             Label clickedLabel = sender as Label;
 
             if (clickedLabel != null)
             {
+                // If the elapsed timer is not enabled, start it.
+                if (!elapsedTimer.Enabled)
+                {
+                    elapsedSecs = 0;
+                    elapsedLabel.Text = elapsedSecs.ToString();
+                    elapsedTimer.Start();
+                }
+
                 // If the clicked label is black, the player clicked
                 // an icon that's already been revealed --
                 // ignore the click
@@ -185,6 +199,17 @@ namespace MatchingGame
             // is clicked, the program knows it's the first click.
             firstClicked = null;
             secondClicked = null;
+        }
+
+        // <summary>
+        // The timer is started when the player has clicked an icon.
+        // It is stopped when the game is finished.
+        // It updates the number of elapsed seconds, and the label.
+        // </summary>
+        private void elapsedTimer_Tick(object sender, EventArgs e)
+        {
+            ++elapsedSecs;
+            elapsedLabel.Text = elapsedSecs.ToString();
         }
     }
 }
