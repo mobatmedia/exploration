@@ -79,8 +79,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 50);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 74);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -291,7 +290,8 @@
             // elapsedLabel
             // 
             this.elapsedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.elapsedLabel.Location = new System.Drawing.Point(475, 0);
+            this.elapsedLabel.Location = new System.Drawing.Point(488, 15);
+            this.elapsedLabel.Margin = new System.Windows.Forms.Padding(3);
             this.elapsedLabel.Name = "elapsedLabel";
             this.elapsedLabel.Size = new System.Drawing.Size(217, 50);
             this.elapsedLabel.TabIndex = 1;
@@ -307,7 +307,8 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(698, 2);
+            this.label17.Location = new System.Drawing.Point(711, 17);
+            this.label17.Margin = new System.Windows.Forms.Padding(3);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(170, 46);
             this.label17.TabIndex = 2;
@@ -316,9 +317,11 @@
             // resetButton
             // 
             this.resetButton.AutoSize = true;
-            this.resetButton.Location = new System.Drawing.Point(13, 2);
+            this.resetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetButton.Location = new System.Drawing.Point(12, 12);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(75, 35);
+            this.resetButton.Size = new System.Drawing.Size(118, 56);
             this.resetButton.TabIndex = 3;
             this.resetButton.Text = "reset";
             this.resetButton.UseVisualStyleBackColor = true;
@@ -328,7 +331,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 879);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(901, 918);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.elapsedLabel);
