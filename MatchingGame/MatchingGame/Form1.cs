@@ -81,6 +81,11 @@ namespace MatchingGame
                     iconLabel.ForeColor = iconLabel.BackColor;
                 }
             }
+
+            // Reset firstClicked and secondClicked so the next time a label
+            // is clicked, the program knows it's the first click.
+            firstClicked = null;
+            secondClicked = null;
         }
 
         /// <summary>
@@ -210,6 +215,14 @@ namespace MatchingGame
         {
             ++elapsedSecs;
             elapsedLabel.Text = elapsedSecs.ToString();
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            elapsedTimer.Stop();
+            HideIcons();
+            AssignIconsToSquares();
         }
     }
 }
