@@ -314,3 +314,4 @@ vignettes/*.pdf
 /Math Quiz/Math Quiz/obj/Debug
 /MatchingGame/MatchingGame/bin/Debug
 /MatchingGame/MatchingGame/obj/Debug
+/converse/data/converse_memory.pkl
