@@ -2,6 +2,7 @@
 
 import pickle
 
+
 class Pickleable(object):
     """Class for subclassing to create pickleable classes"""
 
@@ -14,7 +15,7 @@ class Pickleable(object):
         with open(path, 'rb') as fp:
             obj.__dict__.update(pickle.load(fp))
         return obj
-    
+
     def save(self, path):
         with open(path, 'wb') as fp:
             pickle.dump(self.__dict__, fp, pickle.DEFAULT_PROTOCOL)
