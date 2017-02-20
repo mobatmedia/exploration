@@ -17,6 +17,9 @@ class Memory(Pickleable):
         self.memory = defaultdict(defaultdict_int)
         self.baton_token = 'baton_token'
         return super().__init__(**kwargs)
+
+    def __len__(self):
+        return len(self.memory)
     
     def clear(self):
         self.memory.clear()
@@ -52,7 +55,8 @@ class Memory(Pickleable):
         while True:
             this_index = ' '.join([prev_token, this_token]).strip()
             if this_index not in self.memory:
-                this_index = random.sample(self.memory.keys(), 1)[0]
+                this_token = self.baton_token
+                this_index = self.baton_token
             next_token_dict = self.memory[this_index]
             next_token = random.sample(next_token_dict.keys(), 1)[0]
             if next_token==self.baton_token:
@@ -60,4 +64,4 @@ class Memory(Pickleable):
             tokens.append(next_token)
             prev_token = this_token
             this_token = next_token
-        return (this_token, ' '.join(tokens[0:len(tokens)]))
+        return this_token, ' '.join(tokens[0:len(tokens)])
