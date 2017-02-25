@@ -23,13 +23,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="converse.py" />
-    <Compile Include="converse_definitions.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="memory.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="pickleable.py">
+    <Compile Include="pickling.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

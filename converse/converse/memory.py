@@ -1,61 +1,69 @@
 # Copyright 2017 Mario O. Bourgoin
 from collections import defaultdict
 import random
-from pickleable import Pickleable
+from pickling import Pickling
 
 
 def defaultdict_int():
+    """Factory for defaultdict(int)"""
     return defaultdict(int)
 
 
-class Memory(Pickleable):
-    """Remember text as token chains for use in reconstruction."""
+class Memory(Pickling):
+    """Store text as ngram chains for use in construction."""
 
-    def __init__(self, **kwargs):
-        self.description = "Store text as token chains for later use."
+    def __init__(self, n=3, weight=1, baton_token='baton_token', **kwargs):
+        self.description = "Store text as ngram chains for use in construction."
         self.author = "Mario O. Bourgoin"
-        self.__version__ = 0.1
-        self.n = 3
+        self.__version__ = "0.0.1"
         self.memory = defaultdict(defaultdict_int)
-        self.baton_token = 'baton_token'
+        self.baton_token = baton_token
+        self.weight = weight
+        self.n = n
         return super().__init__(**kwargs)
 
     def __len__(self):
         return len(self.memory)
 
     def clear(self):
+        """Forget all text."""
         self.memory.clear()
         return
 
-    def remember(self, seed_token, text):
+    def remember(self, text, seed_index=''):
+        """Add tokens from text to memory led by seed_index."""
+        prev_index = seed_index.strip()
         text_tokens = text.split()
         if len(text_tokens) == 0:
             return ''
-        tokens = [seed_token, self.baton_token]+text_tokens+[self.baton_token]
+        tokens = prev_index.split()+[self.baton_token]+text_tokens+[self.baton_token]
         ngrams = [tokens[i: i+self.n] for i in range(len(tokens)-self.n+1)]
         for *head_tokens, next_token in ngrams:
-            self.memory[' '.join(head_tokens).strip()][next_token] += 1
-        return text_tokens[len(text_tokens)-1]
+            prev_index = ' '.join(head_tokens).strip()
+            self.memory[prev_index][next_token] += self.weight
+        return prev_index
 
-    def read(self, seed_token, path):
-        prev_token = seed_token
+    def read(self, path, seed_index=''):
+        """Add texts from path to memory led by seed_index."""
+        prev_index = seed_index.strip()
         with open(path) as fp:
             line = fp.readline()
             while line != '':
                 line = line.strip()
                 if len(line) > 0:
-                    prev_token = self.remember(prev_token, line)
+                    prev_index = self.remember(line, prev_index)
                 else:
-                    prev_token = ''
+                    prev_index = ''
                 line = fp.readline()
-        return prev_token
+        return prev_index
 
-    def construct(self, seed_token):
-        tokens = []
-        prev_token = seed_token
+    def construct(self, seed_index=''):
+        """Generate texts from memory led by seed_index."""
+        prev_index = seed_index.strip()
         this_token = self.baton_token
+        tokens = []
         while True:
-            this_index = ' '.join([prev_token, this_token]).strip()
+            this_index = ' '.join([prev_index, this_token]).strip()
             if this_index not in self.memory:
                 this_token = self.baton_token
                 this_index = self.baton_token
@@ -64,6 +72,6 @@ class Memory(Pickleable):
             if next_token == self.baton_token:
                 break
             tokens.append(next_token)
-            prev_token = this_token
+            prev_index = this_token
             this_token = next_token
         return this_token, ' '.join(tokens[0:len(tokens)])
