@@ -3,10 +3,13 @@
 import pickle
 
 
-class Pickleable(object):
-    """Class for subclassing to create pickleable classes"""
+class Pickling(object):
+    """Ancillary mix-in class to get a pickling class."""
 
     def __init__(self, **kwargs):
+        self.description = "Ancillary mix-in class to get a pickling class."
+        self.author = "Mario O. Bourgoin"
+        self.__version__ = "0.0.1"
         return super().__init__(**kwargs)
 
     @classmethod
