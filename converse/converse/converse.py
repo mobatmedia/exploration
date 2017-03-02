@@ -27,6 +27,6 @@ def converse(converse_memory, seed_index='', end_program='end_program'):
 
 if __name__ == "__main__":
     converse_memory = Memory()
-    converse_memory.read('', '../data/converse_preload.txt')
+    converse_memory.read('../data/converse_preload.txt', '')
     prev_index = converse(converse_memory, '')
     converse_memory.save('../data/converse_memory.pkl')
