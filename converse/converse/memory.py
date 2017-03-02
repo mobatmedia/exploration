@@ -36,7 +36,8 @@ class Memory(Pickling):
         text_tokens = text.split()
         if len(text_tokens) == 0:
             return ''
-        tokens = prev_index.split()+[self.baton_token]+text_tokens+[self.baton_token]
+        prev_tokens = prev_index.split()
+        tokens = ['']*(self.n-len(prev_tokens)-1)+prev_tokens+[self.baton_token]+text_tokens+[self.baton_token]
         ngrams = [tokens[i: i+self.n] for i in range(len(tokens)-self.n+1)]
         for *head_tokens, next_token in ngrams:
             prev_index = ' '.join(head_tokens).strip()
