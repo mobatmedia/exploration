@@ -1,6 +1,7 @@
 # Copyright 2017 Mario O. Bourgoin
 
 from memory import Memory
+from textwrap import TextWrapper
 
 
 def read_user_input(prompt='> ', end_program='end_program'):
@@ -14,11 +15,13 @@ def read_user_input(prompt='> ', end_program='end_program'):
     return ' '.join(line_list)
 
 
-def converse(converse_memory, seed_index='', end_program='end_program'):
+def converse(converse_memory, seed_index='', end_program='end_program',
+             wrapper = TextWrapper()):
     prev_index = seed_index.strip()
     while True:
         utterance, prev_index = converse_memory.construct(prev_index)
-        print(utterance)
+        for fragment in wrapper.wrap(utterance):
+            print(fragment)
         user_input = read_user_input(end_program=end_program)
         if user_input == end_program:
             break

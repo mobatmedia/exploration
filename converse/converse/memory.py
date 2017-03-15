@@ -32,15 +32,14 @@ class Memory(Pickling):
 
     def remember(self, text, seed_index=''):
         """Add tokens from text to memory led by seed_index."""
-        prev_index = seed_index.strip()
         text_tokens = text.split()
         if len(text_tokens) == 0:
             return ''
-        prev_tokens = prev_index.split()
-        tokens = ['']*(self.n-len(prev_tokens)-1)+prev_tokens+[self.baton_token]+text_tokens+[self.baton_token]
+        prev_tokens = seed_index.split()
+        tokens = ['']*(self.n-2-len(prev_tokens))+prev_tokens+[self.baton_token]+text_tokens+[self.baton_token]
         ngrams = [tokens[i: i+self.n] for i in range(len(tokens)-self.n+1)]
-        for *head_tokens, next_token in ngrams:
-            prev_index = ' '.join(head_tokens).strip()
+        for *prev_tokens, next_token in ngrams:
+            prev_index = ' '.join(prev_tokens).strip()
             self.memory[prev_index][next_token] += self.weight
         return prev_index
 
@@ -75,4 +74,4 @@ class Memory(Pickling):
             tokens.append(next_token)
             prev_index = this_token
             this_token = next_token
-        return this_token, ' '.join(tokens[0:len(tokens)])
+        return ' '.join(tokens[0:len(tokens)]).strip(), this_token
